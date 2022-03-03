@@ -31,7 +31,7 @@ const subredditsSlice = createSlice({
         state.isLoading = false;
         state.subreddits = action.payload;
       })
-      .addCase(fetchSubreddits.error, state => {
+      .addCase(fetchSubreddits.rejected, state => {
         state.error = true;
         state.isLoading = false;
       });
