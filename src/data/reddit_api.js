@@ -1,6 +1,6 @@
 const BASE_URL = 'https://reddit.com/';
 
-export const RedditAPI = {
+export const redditAPI = {
   async getSubreddits() {
     const response = await fetch(`${BASE_URL}subreddits.json`);
     const json = await response.json();

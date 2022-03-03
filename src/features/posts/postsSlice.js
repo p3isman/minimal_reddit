@@ -3,13 +3,13 @@ import {
   createSelector,
   createSlice
 } from '@reduxjs/toolkit';
-import { RedditAPI } from '../../data/reddit_api';
+import { redditAPI } from '../../data/reddit_api';
 
 // Thunks
 export const getPostsBySubreddit = createAsyncThunk(
   'posts/getPostsBySubreddit',
   async subreddit => {
-    const posts = await RedditAPI.getPostsBySubreddit(subreddit);
+    const posts = await redditAPI.getPostsBySubreddit(subreddit);
     return posts;
   }
 );
@@ -17,7 +17,7 @@ export const getPostsBySubreddit = createAsyncThunk(
 export const getPostComments = createAsyncThunk(
   'posts/getPostComments',
   async ({ index, postURL }) => {
-    const comments = await RedditAPI.getPostComments(postURL);
+    const comments = await redditAPI.getPostComments(postURL);
     return { index, comments };
   }
 );
@@ -60,7 +60,8 @@ const postsSlice = createSlice({
       .addCase(getPostsBySubreddit.rejected, state => {
         state.isLoading = false;
         state.error = true;
-      })
+      });
+    builder
       .addCase(getPostComments.pending, (state, action) => {
         const { index } = action.payload;
         state.posts[index].loadingComments = true;

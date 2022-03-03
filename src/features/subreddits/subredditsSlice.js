@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { RedditAPI } from '../../data/reddit_api';
+import { redditAPI } from '../../data/reddit_api';
 
 // Thunk
 export const fetchSubreddits = createAsyncThunk(
   'subreddits/fetchSubreddits',
   async () => {
-    const response = await RedditAPI.getSubreddits();
+    const response = await redditAPI.getSubreddits();
     return response;
   }
 );
