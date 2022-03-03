@@ -98,6 +98,8 @@ export const selectFilteredPosts = createSelector(
   }
 );
 
+export const selectSelectedSubreddit = state => state.selectedSubreddit;
+
 // Action creators
 export const { setSearchTerm, toggleShowComments, selectSubreddit } =
   postsSlice;
