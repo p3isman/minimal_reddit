@@ -60,8 +60,7 @@ const postsSlice = createSlice({
       .addCase(getPostsBySubreddit.rejected, state => {
         state.isLoading = false;
         state.error = true;
-      });
-    builder
+      })
       .addCase(getPostComments.pending, (state, action) => {
         const { index } = action.payload;
         state.posts[index].loadingComments = true;
