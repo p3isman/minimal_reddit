@@ -1,4 +1,4 @@
-const BASE_URL = 'https://reddit.com/';
+const BASE_URL = 'https://www.reddit.com/';
 
 export const redditAPI = {
   async getSubreddits() {
