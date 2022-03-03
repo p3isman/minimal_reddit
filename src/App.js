@@ -5,10 +5,8 @@ import './index.css';
 function App() {
   return (
     <>
-      <header>
-        <Header />
-      </header>
-      <main className='bg-zinc-100 w-screen h-screen'>
+      <Header />
+      <main>
         <SideMenu />
       </main>
     </>
