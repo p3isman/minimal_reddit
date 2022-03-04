@@ -1,6 +1,15 @@
+import { useSelector } from 'react-redux';
+import { selectSelectedSubreddit } from '../features/subreddits/subredditsSlice';
+
 const Subreddit = ({ title, imageURL }) => {
+  const selectedSubreddit = useSelector(selectSelectedSubreddit);
+  const isSelected = title === selectedSubreddit;
+
   return (
-    <div className='flex items-center my-2 py-2 pl-3 pr-2 shadow rounded-md hover:bg-gray-200'>
+    <div
+      className={`flex items-center my-2 py-2 pl-3 pr-2 shadow rounded-md hover:bg-gray-200 ${
+        isSelected && 'bg-green-100'
+      }`}>
       {imageURL ? (
         <img
           src={imageURL}

@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchSubreddits,
-  selectSubreddits
+  selectSubredditsSlice
 } from '../features/subreddits/subredditsSlice';
 import Subreddit from './Subreddit';
 
 const SideMenu = () => {
-  const subredditsSlice = useSelector(selectSubreddits);
+  const subredditsSlice = useSelector(selectSubredditsSlice);
   const { error, isLoading, subreddits } = subredditsSlice;
 
   // Fetch subreddits
