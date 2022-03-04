@@ -14,12 +14,18 @@ export const fetchSubreddits = createAsyncThunk(
 const initialState = {
   subreddits: [],
   error: false,
-  isLoading: false
+  isLoading: false,
+  selectedSubreddit: 'r/AskReddit'
 };
 
 const subredditsSlice = createSlice({
   name: 'subreddits',
   initialState,
+  reducers: {
+    selectSubreddit: (state, action) => {
+      state.selectedSubreddit = action.payload;
+    }
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchSubreddits.pending, state => {
@@ -40,5 +46,10 @@ const subredditsSlice = createSlice({
 
 export default subredditsSlice.reducer;
 
-// Selector
-export const selectSubreddits = state => state.subreddits;
+// Action creators
+export const { selectSubreddit } = subredditsSlice;
+
+// Selectors
+export const selectSubredditsSlice = state => state.subreddits;
+export const selectSelectedSubreddit = state =>
+  state.subreddits.selectedSubreddit;

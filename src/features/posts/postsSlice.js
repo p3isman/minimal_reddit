@@ -27,8 +27,7 @@ const initialState = {
   posts: [],
   error: false,
   isLoading: false,
-  searchTerm: '',
-  selectedSubreddit: 'r/AskReddit'
+  searchTerm: ''
 };
 
 const postsSlice = createSlice({
@@ -41,9 +40,6 @@ const postsSlice = createSlice({
     toggleShowComments: (state, action) => {
       state.posts[action.payload].showComments =
         !state.posts[action.payload].showComments;
-    },
-    selectSubreddit: (state, action) => {
-      state.selectedSubreddit = action.payload;
     }
   },
   extraReducers: builder => {
@@ -83,8 +79,8 @@ const postsSlice = createSlice({
 export default postsSlice.reducer;
 
 // Selectors
-const selectSearchTerm = state => state.searchTerm;
-const selectPosts = state => state.posts;
+const selectSearchTerm = state => state.posts.searchTerm;
+const selectPosts = state => state.posts.posts;
 
 export const selectFilteredPosts = createSelector(
   [selectSearchTerm, selectPosts],
@@ -98,8 +94,5 @@ export const selectFilteredPosts = createSelector(
   }
 );
 
-export const selectSelectedSubreddit = state => state.selectedSubreddit;
-
 // Action creators
-export const { setSearchTerm, toggleShowComments, selectSubreddit } =
-  postsSlice;
+export const { setSearchTerm, toggleShowComments } = postsSlice;
