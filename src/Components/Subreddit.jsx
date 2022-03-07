@@ -1,15 +1,20 @@
-import { useSelector } from 'react-redux';
-import { selectSelectedSubreddit } from '../features/subreddits/subredditsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectSelectedSubreddit,
+  selectSubreddit
+} from '../features/subreddits/subredditsSlice';
 
 const Subreddit = ({ title, imageURL }) => {
   const selectedSubreddit = useSelector(selectSelectedSubreddit);
   const isSelected = title === selectedSubreddit;
+  const dispatch = useDispatch();
 
   return (
-    <div
-      className={`flex items-center my-2 py-2 pl-3 pr-2 shadow rounded-md hover:bg-gray-200 ${
-        isSelected && 'bg-green-100'
-      }`}>
+    <button
+      className={`flex items-center w-full my-2 py-2 pl-3 pr-2 shadow rounded-md hover:bg-gray-200 transition duration-150 ${
+        isSelected && 'bg-green-100 border border-green-300'
+      }`}
+      onClick={() => dispatch(selectSubreddit(title))}>
       {imageURL ? (
         <img
           src={imageURL}
@@ -31,7 +36,7 @@ const Subreddit = ({ title, imageURL }) => {
       )}
 
       <span className='px-2'>{title}</span>
-    </div>
+    </button>
   );
 };
 
