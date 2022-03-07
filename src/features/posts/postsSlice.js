@@ -95,4 +95,4 @@ export const selectFilteredPosts = createSelector(
 );
 
 // Action creators
-export const { setSearchTerm, toggleShowComments } = postsSlice;
+export const { setSearchTerm, toggleShowComments } = postsSlice.actions;

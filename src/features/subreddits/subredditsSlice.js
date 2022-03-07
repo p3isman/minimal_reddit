@@ -47,7 +47,7 @@ const subredditsSlice = createSlice({
 export default subredditsSlice.reducer;
 
 // Action creators
-export const { selectSubreddit } = subredditsSlice;
+export const { selectSubreddit } = subredditsSlice.actions;
 
 // Selectors
 export const selectSubredditsSlice = state => state.subreddits;
