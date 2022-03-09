@@ -11,8 +11,8 @@ const Subreddit = ({ title, imageURL }) => {
 
   return (
     <button
-      className={`flex items-center w-full my-2 py-2 pl-3 pr-2 shadow rounded-md hover:bg-gray-200 transition duration-150 ${
-        isSelected && 'bg-green-100 border border-green-300'
+      className={`flex items-center w-full my-2 py-2 pl-3 pr-2 shadow rounded-md transition duration-300 hover:bg-green-100 ${
+        isSelected && 'bg-green-50 outline outline-2 outline-green-200'
       }`}
       onClick={() => dispatch(selectSubreddit(title))}>
       {imageURL ? (
@@ -23,11 +23,9 @@ const Subreddit = ({ title, imageURL }) => {
         />
       ) : (
         <svg
-          stroke='currentColor'
           fill='green'
           strokeWidth='0'
           viewBox='0 0 512 512'
-          className='default-icon'
           height='2.5rem'
           width='2.5rem'
           xmlns='http://www.w3.org/2000/svg'>
