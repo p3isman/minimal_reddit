@@ -12,7 +12,7 @@ const Header = () => {
   };
 
   return (
-    <header className='bg-white flex justify-around py-2.5 border-b'>
+    <header className='flex justify-around fixed bg-white w-full top-0 py-2.5 border-b shadow-md z-10'>
       <div className='flex'>
         <svg
           className='pr-1'
