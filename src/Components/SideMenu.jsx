@@ -15,9 +15,24 @@ const SideMenu = () => {
   useEffect(() => dispatch(fetchSubreddits()), [dispatch]);
 
   return (
-    <div className='float-right mr-10 my-10'>
+    <div className='mr-10 mt-5 min-w-fit'>
+      <h3 className='text-xl'>Subreddits</h3>
       {error && <h3>Error loading subreddits</h3>}
-      {isLoading && <h3>Loading subreddits...</h3>}
+      {isLoading && (
+        <div className='w-400 border-2 rounded-md p-10 mt-5'>
+          <div className='flex animate-pulse flex-col space-y-3'>
+            <div className='w-40 bg-gray-300 h-6 rounded-md '></div>
+            <div className='w-38 bg-gray-300 h-6 rounded-md '></div>
+            <div className='w-20 bg-gray-300 h-6 rounded-md '></div>
+            <div className='w-38 bg-gray-300 h-6 rounded-md '></div>
+            <div className='w-20 bg-gray-300 h-6 rounded-md '></div>
+            <div className='w-38 bg-gray-300 h-6 rounded-md '></div>
+            <div className='w-20 bg-gray-300 h-6 rounded-md '></div>
+            <div className='w-38 bg-gray-300 h-6 rounded-md '></div>
+            <div className='w-20 bg-gray-300 h-6 rounded-md '></div>
+          </div>
+        </div>
+      )}
       {!error &&
         !isLoading &&
         subreddits.map(subreddit => (
