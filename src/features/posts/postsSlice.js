@@ -14,14 +14,6 @@ export const getPostsBySubreddit = createAsyncThunk(
   }
 );
 
-export const getPostComments = createAsyncThunk(
-  'posts/getPostComments',
-  async ({ index, postURL }) => {
-    const comments = await redditAPI.getPostComments(postURL);
-    return { index, comments };
-  }
-);
-
 // Slice
 const initialState = {
   posts: [],
@@ -36,10 +28,6 @@ const postsSlice = createSlice({
   reducers: {
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
-    },
-    toggleShowComments: (state, action) => {
-      state.posts[action.payload].showComments =
-        !state.posts[action.payload].showComments;
     }
   },
   extraReducers: builder => {
@@ -56,22 +44,6 @@ const postsSlice = createSlice({
       .addCase(getPostsBySubreddit.rejected, state => {
         state.isLoading = false;
         state.error = true;
-      })
-      .addCase(getPostComments.pending, (state, action) => {
-        const { index } = action.payload;
-        state.posts[index].loadingComments = true;
-        state.posts[index].errorComments = false;
-      })
-      .addCase(getPostComments.fulfilled, (state, action) => {
-        const { index, comments } = action.payload;
-        state.posts[index].loadingComments = false;
-        state.posts[index].errorComments = false;
-        state.posts[index].comments = comments;
-      })
-      .addCase(getPostComments.rejected, (state, action) => {
-        const { index } = action.payload;
-        state.posts[index].loadingComments = true;
-        state.posts[index].errorComments = false;
       });
   }
 });
@@ -93,6 +65,7 @@ export const selectFilteredPosts = createSelector(
     return posts;
   }
 );
+export const selectPostsSlice = state => state.posts;
 
 // Action creators
-export const { setSearchTerm, toggleShowComments } = postsSlice.actions;
+export const { setSearchTerm } = postsSlice.actions;
