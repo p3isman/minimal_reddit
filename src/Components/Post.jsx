@@ -8,6 +8,7 @@ const Post = ({ post }) => {
 
   const [comments, setComments] = useState([]);
   const [visibleComments, setVisibleComments] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [votes, setVotes] = useState(initialVotes);
   const [hasVoted, setHasVoted] = useState(null);
@@ -15,9 +16,12 @@ const Post = ({ post }) => {
   const handleToggleComments = async () => {
     if (comments.length === 0) {
       try {
+        setIsLoading(true);
         setComments(await redditAPI.getPostComments(post.permalink));
+        setIsLoading(false);
         setError(false);
       } catch {
+        setIsLoading(false);
         setError(true);
       }
     }
@@ -38,7 +42,7 @@ const Post = ({ post }) => {
     <div className='flex my-10 rounded-lg outline outline-2 outline-neutral-300 hover:outline-neutral-400 shadow-lg'>
       <div className='flex flex-col align-center bg-gray-50 px-0.5 pt-3 border-r-2 w-12'>
         <button
-          className='flex justify-center'
+          className='flex justify-center select-none'
           onClick={() => handleVote('up')}>
           <svg
             className={`hover:fill-green-500 ${
@@ -57,7 +61,7 @@ const Post = ({ post }) => {
         </button>
         <p className='text-xs text-center font-bold'>{formatNumber(votes)}</p>
         <button
-          className='flex justify-center'
+          className='flex justify-center select-none'
           onClick={() => handleVote('down')}>
           <svg
             className={`hover:fill-red-500 ${
@@ -119,6 +123,13 @@ const Post = ({ post }) => {
           comments.map(comment => (
             <Comment key={comment.id} comment={comment} />
           ))}
+        {isLoading && (
+          <div className='m-3 flex flex-col gap-3'>
+            <div className='bg-gray-200 w-80 h-8 animate-pulse duration-200 rounded-full'></div>
+            <div className='bg-gray-200 w-80 h-8 animate-pulse duration-200 rounded-full'></div>
+            <div className='bg-gray-200 w-80 h-8 animate-pulse duration-200 rounded-full'></div>
+          </div>
+        )}
         {error && <p className='m-2'>Error loading comments...</p>}
       </div>
     </div>
