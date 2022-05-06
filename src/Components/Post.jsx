@@ -39,7 +39,7 @@ const Post = ({ post }) => {
   };
 
   return (
-    <div className='flex my-10 rounded-lg outline outline-2 outline-neutral-300 hover:outline-neutral-400 shadow-lg'>
+    <div className='flex my-3 outline outline-neutral-300 sm:outline-2 sm:my-10 sm:rounded-lg sm:shadow-lg sm:hover:outline-neutral-400'>
       <div className='flex flex-col align-center bg-gray-50 px-0.5 pt-3 border-r-2 w-12'>
         <button
           className='flex justify-center select-none'
@@ -125,9 +125,9 @@ const Post = ({ post }) => {
           ))}
         {isLoading && (
           <div className='m-3 flex flex-col gap-3'>
-            <div className='bg-gray-200 w-80 h-8 animate-pulse duration-200 rounded-full'></div>
-            <div className='bg-gray-200 w-80 h-8 animate-pulse duration-200 rounded-full'></div>
-            <div className='bg-gray-200 w-80 h-8 animate-pulse duration-200 rounded-full'></div>
+            <div className='bg-gray-200 w-4/5 h-8 animate-pulse duration-200 rounded-full'></div>
+            <div className='bg-gray-200 w-4/5 h-8 animate-pulse duration-200 rounded-full'></div>
+            <div className='bg-gray-200 w-4/5 h-8 animate-pulse duration-200 rounded-full'></div>
           </div>
         )}
         {error && <p className='m-2'>Error loading comments...</p>}

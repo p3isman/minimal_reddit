@@ -22,21 +22,19 @@ const Posts = () => {
   );
 
   return (
-    <div className='max-w-2xl mx-20'>
+    <div className='flex-1 max-w-full sm:max-w-2xl sm:mx-10'>
       {isLoading &&
         [...Array(5)].map(i => (
-          <div class='w-full flex flex-col flex-1 gap-5 sm:p-2 outline outline-gray-200 rounded-xl my-5'>
-            <div class='flex flex-1 flex-col gap-3'>
-              <div class='bg-gray-200 w-full animate-pulse h-14 rounded-2xl'></div>
-              <div class='bg-gray-200 w-full animate-pulse h-3 rounded-2xl'></div>
-              <div class='bg-gray-200 w-full animate-pulse h-3 rounded-2xl'></div>
-              <div class='bg-gray-200 w-full animate-pulse h-3 rounded-2xl'></div>
-              <div class='bg-gray-200 w-full animate-pulse h-3 rounded-2xl'></div>
+          <div className='w-full flex flex-col flex-1 gap-5 p-2 my-3 outline outline-gray-200 sm:rounded-xl sm:my-5'>
+            <div className='flex flex-1 flex-col gap-3'>
+              <div className='bg-gray-200 w-full animate-pulse h-14 rounded-2xl'></div>
+              <div className='bg-gray-200 w-full animate-pulse h-3 rounded-2xl'></div>
+              <div className='bg-gray-200 w-full animate-pulse h-3 rounded-2xl'></div>
+              <div className='bg-gray-200 w-full animate-pulse h-3 rounded-2xl'></div>
+              <div className='bg-gray-200 w-full animate-pulse h-3 rounded-2xl'></div>
             </div>
-            <div class='mt-auto flex gap-3'>
-              <div class='bg-gray-200 w-20 h-8 animate-pulse rounded-full'></div>
-              <div class='bg-gray-200 w-20 h-8 animate-pulse rounded-full'></div>
-              <div class='bg-gray-200 w-20 h-8 animate-pulse rounded-full ml-auto'></div>
+            <div className='mt-auto flex gap-3'>
+              <div className='bg-gray-200 w-20 h-8 animate-pulse rounded-full'></div>
             </div>
           </div>
         ))}
