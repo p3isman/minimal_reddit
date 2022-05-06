@@ -16,6 +16,9 @@ export const redditAPI = {
   async getPostComments(postURL) {
     const response = await fetch(`${BASE_URL}${postURL}.json`);
     const json = await response.json();
-    return json[1].data.children.map(comment => comment.data);
+    let comments = json[1].data.children.map(comment => comment.data);
+    // Last comment needs to be removed
+    comments.pop();
+    return comments;
   }
 };
