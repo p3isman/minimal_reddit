@@ -11,7 +11,7 @@ const Subreddit = ({ title, imageURL }) => {
 
   return (
     <button
-      className={`flex items-center w-full my-2 py-2 pl-3 pr-2 shadow rounded-md transition duration-300 hover:bg-green-100 ${
+      className={`flex items-center w-fit-content md:w-full my-2 mx-1 py-2 pl-3 pr-2 shadow rounded-md transition duration-300 hover:bg-green-100 ${
         isSelected && 'bg-green-50 outline outline-2 outline-green-200'
       }`}
       onClick={() => dispatch(selectSubreddit(title))}>
