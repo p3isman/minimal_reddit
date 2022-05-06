@@ -6,7 +6,7 @@ import {
 } from '../features/subreddits/subredditsSlice';
 import Subreddit from './Subreddit';
 
-const SideMenu = () => {
+const MobileMenu = ({ isVisible }) => {
   const subredditsSlice = useSelector(selectSubredditsSlice);
   const { error, isLoading, subreddits } = subredditsSlice;
 
@@ -15,11 +15,13 @@ const SideMenu = () => {
   useEffect(() => dispatch(fetchSubreddits()), [dispatch]);
 
   return (
-    <div className='relative mr-8 mt-5 hidden md:block'>
-      <h3 className='text-xl'>Subreddits</h3>
+    <div
+      className={`fixed flex flex-wrap right-0 overflow-y-auto w-full h-1/3 bg-white mt-3 px-10 z-10 shadow-lg md:hidden ${
+        !isVisible ? 'hidden' : ''
+      }`}>
       {error && <h3>Error loading subreddits</h3>}
       {isLoading && (
-        <div className='w-400 border-2 rounded-md p-9 mt-5'>
+        <div className='w-400 border-2 rounded-md p-9 mt-20'>
           <div className='flex animate-pulse flex-col space-y-3'>
             <div className='w-38 bg-gray-300 h-6 rounded-md'></div>
             <div className='w-38 bg-gray-300 h-6 rounded-md'></div>
@@ -48,4 +50,4 @@ const SideMenu = () => {
   );
 };
 
-export default SideMenu;
+export default MobileMenu;
