@@ -61,7 +61,9 @@ const Header = () => {
             placeholder='Search Posts'
           />
         </div>
-        <Hamburger size={20} toggled={navbarOpen} toggle={setNavbarOpen} />
+        <div className='md:hidden'>
+          <Hamburger size={20} toggled={navbarOpen} toggle={setNavbarOpen} />
+        </div>
       </header>
       <MobileMenu isVisible={navbarOpen} />
     </>
