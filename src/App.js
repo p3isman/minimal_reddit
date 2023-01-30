@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="flex justify-around mt-14 max-w-screen-xl">
+      <main className='flex justify-center lg:gap-20 mt-14'>
         <Posts />
         <SideMenu />
       </main>
